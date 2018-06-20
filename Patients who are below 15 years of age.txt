@@ -1,0 +1,22 @@
+USE [PalladiumRecords]
+GO
+
+SELECT [PatientID]
+      ,[FirstName]
+      ,[MiddleName]
+      ,[LastName]
+      ,[Age]
+      ,[County]
+      ,[SubCounty]
+      ,[Ward]
+      ,[Village]
+      ,[CellPhone]
+      ,[Email]
+      ,[AlternativeCellNumber]
+      ,[EnrollmentDate]
+      ,[EnrollmentNumber]
+  FROM [dbo].[Patient]
+  WHERE Age < 15
+GO
+
+
