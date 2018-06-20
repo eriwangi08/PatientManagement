@@ -1,0 +1,60 @@
+﻿div#searchmodfbox_jqGrid {
+    left: 207.69px;
+    top: 149.99px;
+    width: 650px;
+    height: auto;
+    overflow: hidden;
+    display: block;
+    z-index: 950;
+}
+
+.ui-jqdialog .ui-jqdialog-titlebar {
+    padding: .3em .2em;
+    position: relative;
+    height: 35px;
+}
+
+.fm-button {
+    height: 40px;
+    display: inline-block;
+    margin: 2px 4px 0 0;
+    padding: .6em .5em .2em .5em;
+    text-decoration: none !important;
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+    zoom: 1;
+}
+
+/* Inline style a#fbox_jqGrid_reset */
+{
+    width: 80px;
+}
+
+/* Inline style a#fbox_jqGrid_search */
+{
+    width: 72px;
+}
+
+/* Inline style div#searchmodfbox_jqGrid */
+{
+    left: 202px;
+    top: 74px;
+    width: 550px;
+    height: auto;
+    overflow: hidden;
+    z-index: 950;
+    display: block;
+}
+
+/* Inline style div#delmodjqGrid */
+{
+    left: 203px;
+    top: 75px;
+    width: 1040px;
+    height: auto;
+    overflow: hidden;
+    display: block;
+    z-index: 950;
+}
+

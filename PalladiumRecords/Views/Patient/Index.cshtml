@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+
+<table id="jqGrid"></table>
+<div id="jqGridPager"></div>
+
+<link href="~/Content/Theme/jquery-ui.min.css" rel="stylesheet" />
+<link href="~/Content/ui.jqgrid.css" rel="stylesheet" />
+<link href="~/Content/Theme/fontawesome.css" rel="stylesheet" />
+<link href="~/Content/Theme/OverrideStyles.css" rel="stylesheet" />
+
+@section scripts{
+    <script src="~/Scripts/jqGrid/grid.locale-en.js"></script>
+    <script src="~/Scripts/jqGrid/jquery.jqGrid.js"></script>
+
+    <script>
+        $(function () {
+            //name prperty binds to the json property
+            $grid = $("#jqGrid").jqGrid({
+                url: '@Url.Action("GetData", "Patient")',
+                mtype: 'POST',
+                datatype: 'json',
+                colModel: [
+                    { label: 'PatientID', name: 'PatientID', editable: true, width: 95,  hidden: true, key : true },
+                    { label: 'First Name', name: 'FirstName', editable: true, width: 95 },
+                    { label: 'Middle Name', name: 'MiddleName', editable: true, width: 95 },
+                    { label: 'Last Name', name: 'LastName', editable: true, width: 95 },
+                    { label: 'Age', name: 'Age', editable: true, width: 50 },
+                    { label: 'County', name: 'County', editable: true, width: 95 },
+                    { label: 'Sub County', name: 'SubCounty', editable: true, width: 95 },
+                    { label: 'Ward', name: 'Ward', editable: true, width: 95 },
+                    { label: 'Village', name: 'Village', editable: true, width: 95 },
+                    { label: 'Cell Phone', name: 'CellPhone', editable: true, width: 95 },
+                    { label: 'Email', name: 'Email', editable: true, width: 95 },
+                    { label: 'Alternative Cell Number', name: 'AlternativeCellNumber', editable: true, width: 135 },
+                    { label: 'Enrollment Date', name: 'EnrollmentDate', editable: true, width: 135 },
+                    { label: 'Enrollment Number', name: 'EnrollmentNumber', editable: true, width: 95 },
+                    { label: 'NextOfKin', name: 'NextOfKin', editable: true, width: 95 },
+                ],
+                sortname: 'PatientID',
+                sortorder: 'asc',
+                loadOnce: true, // to do operations in client side/browser
+                pager: '#jqGridPager',
+                rowNum: 10,
+                rowList: [10, 20, 30, 50], //to change number of records within a page
+                viewrecords: true,
+                height: 500,
+                 search: true,
+                editable: true
+            });
+
+            function getSelectedPatient() {}
+            $('#jqGrid').jqGrid('getGridParam', 'selrow');
+
+
+
+            $("#jqGrid").jqGrid('navGrid', '#jqGridPager', { edit: true, add: true, del: true, position: "left", cloneToTop: false },
+
+                // options for the Edit Dialog
+                {
+                    editCaption: "The Edit Dialog",
+                    recreateForm: true,
+                    url: '@Url.Action("AddEditData", "Patient")',
+                    //checkOnUpdate : true,
+                    //checkOnSubmit : true,
+                    beforeSubmit: function (postdata, form, oper) {
+                        if (confirm('Are you sure you want to update this row?')) {
+                            // do something
+                            return [true, ''];
+                        } else {
+                            return [false, 'You can not submit!'];
+                        }
+                    },
+                    closeAfterEdit: true,
+                    errorTextFormat: function (data) {
+                        return 'Error: ' + data.responseText
+                    }
+                },
+                // options for the Add Dialog
+                {
+                    closeAfterAdd: true,
+                    recreateForm: true,
+                    url: '@Url.Action("AddEditData", "Patient")',
+                    errorTextFormat: function (data) {
+                        return 'Error: ' + data.responseText
+                    }
+                },
+                // options for the Delete Dialog
+                {
+                    mtype: "",
+                    url: '@Url.Action("DeleteData", "Patient")' + getSelectedPatient(),
+                    errorTextFormat: function (data) {
+                        return 'Error: ' + data.responseText
+                    }                
+                });
+
+        }); 
+      
+    </script>
+
+}

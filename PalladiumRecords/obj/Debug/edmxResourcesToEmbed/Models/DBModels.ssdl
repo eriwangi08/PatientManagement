@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PalladiumRecordsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="NextOfKin">
+    <Key>
+      <PropertyRef Name="NextOfKinID" />
+    </Key>
+    <Property Name="NextOfKinID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="100" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="100" />
+    <Property Name="LastName" Type="varchar" MaxLength="100" />
+    <Property Name="Age" Type="int" />
+    <Property Name="County" Type="varchar" MaxLength="100" />
+    <Property Name="SubCounty" Type="varchar" MaxLength="100" />
+    <Property Name="Ward" Type="varchar" MaxLength="100" />
+    <Property Name="Village" Type="varchar" MaxLength="100" />
+    <Property Name="CellPhone" Type="varchar" MaxLength="100" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="AlternativeCellNumber" Type="varchar" MaxLength="100" />
+    <Property Name="EnrollmentDate" Type="date" />
+    <Property Name="EnrollmentNumber" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="PatientID" />
+    </Key>
+    <Property Name="PatientID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="100" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="100" />
+    <Property Name="LastName" Type="varchar" MaxLength="100" />
+    <Property Name="Age" Type="int" />
+    <Property Name="County" Type="varchar" MaxLength="100" />
+    <Property Name="SubCounty" Type="varchar" MaxLength="100" />
+    <Property Name="Ward" Type="varchar" MaxLength="100" />
+    <Property Name="Village" Type="varchar" MaxLength="100" />
+    <Property Name="CellPhone" Type="varchar" MaxLength="100" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="AlternativeCellNumber" Type="varchar" MaxLength="100" />
+    <Property Name="EnrollmentDate" Type="date" />
+    <Property Name="EnrollmentNumber" Type="bigint" />
+    <Property Name="NextOfKin" Type="bigint" />
+  </EntityType>
+  <EntityContainer Name="PalladiumRecordsModelStoreContainer">
+    <EntitySet Name="NextOfKin" EntityType="Self.NextOfKin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
