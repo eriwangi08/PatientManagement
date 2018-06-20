@@ -1,0 +1,3 @@
+The documentation for the jQGrid can be found here :
+
+http://www.trirand.com/jqgridwiki/doku.php?id=wiki:how_it_works
