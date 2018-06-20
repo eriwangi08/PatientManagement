@@ -1,0 +1,10 @@
+*************Algorithm********************************
+
+1. Have deletedDate datetime field in the db table.
+2. Have a isDeleted bit (1 or 0) field in the same db table as 1 above. It should have a
+   a default value of 0 to indicate false, that is, the record is not deleted.
+3. During delete operation, rather than deleting the record, change its 
+  isDeleted bit status to 1 to indicate true. At the same time, update the deletedDate	
+  field of that record to the default current date as at the delete operation time.
+4. During retrieval of  deleted records, select records where is isDeletedDate is 1 (true). The
+   list of selected fields of the resultset shoudl have the deletedDate field.
