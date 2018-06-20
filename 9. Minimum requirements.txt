@@ -1,0 +1,8 @@
+SOFTWARE REQUIREMENTS
+Operating System : Windows
+User Interface : Bootstrap, JQuery UI
+Client-side Scripting : JQuery
+Programming Language : C#.
+IDE/Workbench : Visual Studio 2017
+Server Deployment : IIS
+Database : SQL Database using SQL Server Management Studio as the client tool
