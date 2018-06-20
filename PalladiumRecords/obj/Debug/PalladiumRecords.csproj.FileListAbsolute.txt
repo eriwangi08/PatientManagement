@@ -92,4 +92,3 @@ C:\Users\eric.mwangi\source\repos\PalladiumRecords\PalladiumRecords\obj\Debug\Pa
 C:\Users\eric.mwangi\source\repos\PalladiumRecords\PalladiumRecords\obj\Debug\PalladiumRecords.csproj.CopyComplete
 C:\Users\eric.mwangi\source\repos\PalladiumRecords\PalladiumRecords\obj\Debug\PalladiumRecords.dll
 C:\Users\eric.mwangi\source\repos\PalladiumRecords\PalladiumRecords\obj\Debug\PalladiumRecords.pdb
-C:\Users\eric.mwangi\source\repos\PalladiumRecords\PalladiumRecords\obj\Debug\PalladiumRecords.csprojResolveAssemblyReference.cache

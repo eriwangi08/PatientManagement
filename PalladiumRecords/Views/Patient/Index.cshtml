@@ -26,9 +26,9 @@
                 datatype: 'json',
                 colModel: [
                     { label: 'PatientID', name: 'PatientID', editable: true, width: 95,  hidden: true, key : true },
-                    { label: 'First Name', name: 'FirstName', editable: true, width: 95 },
-                    { label: 'Middle Name', name: 'MiddleName', editable: true, width: 95 },
-                    { label: 'Last Name', name: 'LastName', editable: true, width: 95 },
+                    { label: 'First Name', name: 'FirstName', editable: true, sortable: true, width: 95 },
+                    { label: 'Middle Name', name: 'MiddleName', editable: true, sortable: true, width: 95 },
+                    { label: 'Last Name', name: 'LastName', editable: true, sortable: true, width: 95 },
                     { label: 'Age', name: 'Age', editable: true, width: 50 },
                     { label: 'County', name: 'County', editable: true, width: 95 },
                     { label: 'Sub County', name: 'SubCounty', editable: true, width: 95 },
@@ -37,19 +37,26 @@
                     { label: 'Cell Phone', name: 'CellPhone', editable: true, width: 95 },
                     { label: 'Email', name: 'Email', editable: true, width: 95 },
                     { label: 'Alternative Cell Number', name: 'AlternativeCellNumber', editable: true, width: 135 },
-                    { label: 'Enrollment Date', name: 'EnrollmentDate', editable: true, width: 135 },
+                    { label: 'Enrollment Date', name: 'EnrollmentDate', formatter: "date", formatoptions: { srcformat: 'd/m/Y', newformat: 'd/m/Y' }, editable: true, width: 135 },
                     { label: 'Enrollment Number', name: 'EnrollmentNumber', editable: true, width: 95 },
                     { label: 'NextOfKin', name: 'NextOfKin', editable: true, width: 95 },
                 ],
-                sortname: 'PatientID',
+                sortname: 'FirstName',
                 sortorder: 'asc',
                 loadOnce: true, // to do operations in client side/browser
                 pager: '#jqGridPager',
                 rowNum: 10,
+                caption: "List of Patients",
+                emptyrecords: "No patients to display",
+                multiselect: false,
+                jsonreader: {
+                    repeatitems: false,
+                    Id:"0"
+                },
                 rowList: [10, 20, 30, 50], //to change number of records within a page
                 viewrecords: true,
                 height: 500,
-                 search: true,
+                search: true,
                 editable: true
             });
 
@@ -58,7 +65,7 @@
 
 
 
-            $("#jqGrid").jqGrid('navGrid', '#jqGridPager', { edit: true, add: true, del: true, position: "left", cloneToTop: false },
+            $("#jqGrid").jqGrid('navGrid', '#jqGridPager', { edit: true, add: true, del: true, search : true, refresh : true, position: "left", cloneToTop: false },
 
                 // options for the Edit Dialog
                 {
@@ -67,6 +74,9 @@
                     url: '@Url.Action("AddEditData", "Patient")',
                     //checkOnUpdate : true,
                     //checkOnSubmit : true,
+                    onInitializeForm: function () {
+
+                    },
                     beforeSubmit: function (postdata, form, oper) {
                         if (confirm('Are you sure you want to update this row?')) {
                             // do something
@@ -90,9 +100,24 @@
                     }
                 },
                 // options for the Delete Dialog
-                {
-                    mtype: "",
-                    url: '@Url.Action("DeleteData", "Patient")' + getSelectedPatient(),
+                {          
+                    closeAfterDelete: true,
+                    msg: "Are you sure you want to delete this patient?",                    
+                    delData: {
+                        name: function () {
+                            var sel_id = $("#jqGrid").jqGrid('getGridParam', 'selrow');                           
+                            return sel_id;
+                        }
+                    },                
+                    beforeSubmit: function (postdata, form, oper) {
+                        if (confirm('Are you sure you want to delete this row?')) {
+                            // do something
+                            return [true, ''];
+                        } else {
+                            return [false, 'You can not submit!'];
+                        }
+                    },
+                    url: '@Url.Action("DeleteData", "Patient")',
                     errorTextFormat: function (data) {
                         return 'Error: ' + data.responseText
                     }                

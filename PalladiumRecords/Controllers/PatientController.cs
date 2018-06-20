@@ -36,21 +36,22 @@ namespace PalladiumRecords.Controllers
         {
             using (DbModel db = new DbModel())
             {
+                patient.EnrollmentDate = new DateTime();
                 db.Patients.AddOrUpdate(patient);
                 db.SaveChanges();
                 return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
             }
         }
 
-        [HttpDelete]       
-        public ActionResult DeleteData(long patientId)
+        
+        public void DeleteData(int id)
         {
             using (DbModel db = new DbModel())
             {                
-                Patient patient = db.Patients.Where(p => p.PatientID == patientId).FirstOrDefault<Patient>();
+                Patient patient = db.Patients.Where(p => p.PatientID == id).FirstOrDefault<Patient>();
                 db.Patients.Remove(patient);
                 db.SaveChanges();
-                return Json(new { success = true, message = "Deleted Successfully" }, JsonRequestBehavior.AllowGet);
+               // return Json(new { success = true, message = "Deleted Successfully" }, JsonRequestBehavior.AllowGet);
             }
         }
 
