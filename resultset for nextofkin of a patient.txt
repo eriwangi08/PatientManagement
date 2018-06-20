@@ -1,0 +1,23 @@
+USE [PalladiumRecords]
+GO
+
+SELECT [NextOfKinID]
+      ,[FirstName]
+      ,[MiddleName]
+      ,[LastName]
+      ,[Age]
+      ,[County]
+      ,[SubCounty]
+      ,[Ward]
+      ,[Village]
+      ,[CellPhone]
+      ,[Email]
+      ,[AlternativeCellNumber]
+      ,[EnrollmentDate]
+      ,[EnrollmentNumber]
+      ,[PatientID]
+  FROM [dbo].[NextOfKin]
+  WHERE PatientID = PATIENTREFERENCEID
+GO
+
+
